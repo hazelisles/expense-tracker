@@ -1,0 +1,56 @@
+{
+  "category": [
+    {
+      "category": "house",
+      "categoryIcon": "fas fa-home"
+    },
+    {
+      "category": "traffic",
+      "categoryIcon": "fas fa-shuttle-van"
+    },
+    {
+      "category": "entertainment",
+      "categoryIcon": "fas fa-grin-beam"
+    },
+    {
+      "category": "food",
+      "categoryIcon": "fas fa-utensils"
+    },
+    {
+      "category": "others",
+      "categoryIcon": "fas fa-pen"
+    }
+  ],
+  "record": [
+    {
+      "name": "晚餐",
+      "date": "2021-03-30",
+      "category": "food",
+      "amount": 360
+    },
+    {
+      "name": "搭高鐵",
+      "date": "2021-04-21",
+      "category": "traffic",
+      "amount": 1490
+    },
+    {
+      "name": "租金",
+      "date": "2021-05-01",
+      "category": "house",
+      "amount": 11000
+    },
+    {
+      "name": "魔物獵人",
+      "date": "2021-04-25",
+      "category": "entertainment",
+      "amount": 1790
+    },
+    {
+      "name": "AC 學期三",
+      "date": "2021-03-30",
+      "category": "others",
+      "amount": 36000
+    }
+  ]
+}
