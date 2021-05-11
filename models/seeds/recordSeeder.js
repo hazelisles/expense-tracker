@@ -1,10 +1,11 @@
 const db = require("../../config/mongoose")
-const Record = require('../category')
-const { category } = require('./seeds.json')
+const Record = require('../record')
+const { record } = require('./seeds.json')
 
 db.once('open', () => {
-  for (let i = 0; i < category.length; i++) {
-    Category.create(category[i])
-  }
-  console.log('Category created!')
+  Record.create(record)
+    .then(() => {
+      console.log('Record created!')
+      return db.close()
+    }).then(() => console.log('Database connection closed'))
 })
