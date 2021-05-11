@@ -6,21 +6,21 @@
     <div class="d-flex justify-content-center mb-2">
       <div class="money-title text-white">15395</div>
     </div>
+  </div>
+  <div class="col-10 col-md-8 col-lg-7 mx-auto mt-2">
     <div class="d-flex justify-content-end">
       <form action="/" method="POST">
-        <select name="category">
+        <select class="btn btn-outline-light" name="category">
           <option disabled selected hidden>--- 類別 ---</option>
-          　<option value="house">-- 家居物業 --</option>
-          　<option value="traffic">-- 交通出行 --</option>
-          　<option value="entertainment">-- 休閒娛樂 --</option>
-          　<option value="food">-- 餐飲食品 --</option>
+          <option value="house">-- 家居物業 --</option>
+          <option value="traffic">-- 交通出行 --</option>
+          <option value="entertainment">-- 休閒娛樂 --</option>
+          <option value="food">-- 餐飲食品 --</option>
           <option value="others">-- 其他 --</option>
         </select>
       </form>
     </div>
-  </div>
-  <div class="col-10 col-md-8 col-lg-7 mx-auto mt-2">
-    <div class="cards">
+    <div class="cards mt-3">
       <div class="card-body row justify-content-around bg-light mb-1">
         <div class="card-image col-1 d-flex justify-content-center align-items-center">
           <i class="fas fa-home font"></i>
@@ -29,12 +29,12 @@
           <div class="col-12 align-self-center text-item">早餐</div>
           <div class="col-12 align-self-center text-date">2021/05/15</div>
         </div>
-        <div class="card-price col-1 d-flex justify-content-center align-items-center">
-          <div class="text-number">70</div>
+        <div class="card-price col-2 d-flex justify-content-center align-items-center">
+          <div class="text-number">$70</div>
         </div>
         <div class="card-buttons col-2">
-          <button class="btn btn-sm btn-success col-12 m-1">Edit</button>
-          <button class="btn btn-sm btn-danger col-12 m-1">Delete</button>
+          <button class="btn-sm btn-success col-12 my-1"><i class="fas fa-edit"></i></button>
+          <button class="btn-sm btn-danger col-12 my-1"><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>
 
