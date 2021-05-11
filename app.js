@@ -12,6 +12,10 @@ app.get('/', (req, res) => {
   return res.render('index')
 })
 
+app.get('/create', (req, res) => {
+  return res.render('new')
+})
+
 app.listen(3000, (req, res) => {
   console.log('App is now listening on http://localhost:3000')
 })

@@ -1,5 +1,58 @@
 <div class="container my-3">
   <div class="col-9 col-md-7 col-lg-6 mx-auto mt-5">
-    <div class="card bg-light"></div>
+    <div class="d-flex justify-content-center mb-2">
+      <div class="text-white h1">
+        請修改你的支出
+      </div>
+    </div>
+    <div class="card bg-light">
+      <form action="" method="post">
+        <div class="card-body">
+          <div class="row align-items-center my-3">
+            <div class="col-3">
+              <label for="input-item" class="col-form-label">項目名稱：</label>
+            </div>
+            <div class="col-8">
+              <input type="text" id="input-item" class="form-control" aria-describedby="itemHelp">
+            </div>
+          </div>
+          <div class="row align-items-center my-3">
+            <div class="col-3">
+              <label for="input-date" class="col-form-label">日　期：</label>
+            </div>
+            <div class="col-8">
+              <input type="date" id="input-date" class="form-control" aria-describedby="dateHelp">
+            </div>
+          </div>
+          <div class="row align-items-center my-3">
+            <div class="col-3">
+              <label for="input-category" class="col-form-label">類　別：</label>
+            </div>
+            <div class="col-8">
+              <select name="category" id="input-category" class="form-control">
+                <option selected hidden>--- 類別 --- <i class="fas fa-sort-down"></i></option>
+                　<option value="house">-- 家居物業 --</option>
+                　<option value="traffic">-- 交通出行 --</option>
+                　<option value="entertainment">-- 休閒娛樂 --</option>
+                　<option value="food">-- 餐飲食品 --</option>
+                <option value="others">-- 其他 --</option>
+              </select>
+            </div>
+          </div>
+          <div class="row align-items-center my-3">
+            <div class="col-3">
+              <label for="input-cost" class="col-form-label">金　額：</label>
+            </div>
+            <div class="col-8">
+              <input type="number" id="input-cost" min="0" max="100000" class="form-control"
+                aria-describedby="costHelp">
+            </div>
+          </div>
+          <div class="row justify-content-center align-items-center my-4">
+            <button class="btn btn-secondary col-5" type="submit">修　改　支　出</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
