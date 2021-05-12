@@ -6,14 +6,14 @@
       </div>
     </div>
     <div class="card bg-light">
-      <form action="" method="post">
+      <form action="/" method="post">
         <div class="card-body">
           <div class="row align-items-center my-3">
             <div class="col-3" style="text-align: center;">
               <label for="input-item" class="col-form-label">項目名稱：</label>
             </div>
             <div class="col-8">
-              <input type="text" id="input-item" class="form-control" aria-describedby="itemHelp">
+              <input type="text" id="input-item" name="name" class="form-control" aria-describedby="itemHelp" required>
             </div>
           </div>
           <div class="row align-items-center my-3">
@@ -21,7 +21,7 @@
               <label for="input-date" class="col-form-label">日　期：</label>
             </div>
             <div class="col-8">
-              <input type="date" id="input-date" class="form-control" aria-describedby="dateHelp">
+              <input type="date" id="input-date" name="date" class="form-control" aria-describedby="dateHelp" required>
             </div>
           </div>
           <div class="row align-items-center my-3">
@@ -29,7 +29,7 @@
               <label for="input-category" class="col-form-label">類　別：</label>
             </div>
             <div class="col-8">
-              <select name="category" id="input-category" class="btn btn-outline-dark">
+              <select name="category" id="input-category" class="btn btn-outline-dark" required>
                 <option disabled selected hidden>--- 類別 --- </option>
                 　<option value="house">-- 家居物業 --</option>
                 　<option value="traffic">-- 交通出行 --</option>
@@ -44,8 +44,8 @@
               <label for="input-cost" class="col-form-label">金　額：</label>
             </div>
             <div class="col-8">
-              <input type="number" id="input-cost" min="0" max="100000" class="form-control"
-                aria-describedby="costHelp">
+              <input type="number" id="input-cost" name="amount" min="0" max="100000" class="form-control"
+                aria-describedby="costHelp" required>
             </div>
           </div>
           <div class="row justify-content-center align-items-center my-4">

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 mongoose.connect('mongodb://localhost/expense',  { useNewUrlParser: true, useUnifiedTopology: true })
+  .catch(error => handleError(error))
 
 const db = mongoose.connection
 

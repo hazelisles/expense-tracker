@@ -21,24 +21,24 @@
       </form>
     </div>
     <div class="cards mt-3">
+      {{#each record}}
       <div class="card-body row justify-content-around bg-light mb-1">
         <div class="card-image col-1 d-flex justify-content-center align-items-center">
-          <i class="fas fa-home font"></i>
+          <i class="{{{getIcon this.category ../category}}} font"></i>
         </div>
         <div class="card-text row col-7">
-          <div class="col-12 align-self-center text-item">早餐</div>
-          <div class="col-12 align-self-center text-date">2021/05/15</div>
+          <div class="col-12 align-self-center text-item">{{ this.name }}</div>
+          <div class="col-12 align-self-center text-date">{{ this.date }}</div>
         </div>
         <div class="card-price col-2 d-flex justify-content-center align-items-center">
-          <div class="text-number">$70</div>
+          <div class="text-number">${{ this.amount }}</div>
         </div>
         <div class="card-buttons col-2">
           <button class="btn-sm btn-success col-12 my-1"><i class="fas fa-edit"></i></button>
           <button class="btn-sm btn-danger col-12 my-1"><i class="fas fa-trash-alt"></i></button>
         </div>
       </div>
-
-
+      {{/each}}
     </div>
-
   </div>
+</div>

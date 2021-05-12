@@ -7,5 +7,7 @@ db.once('open', () => {
     .then(() => {
       console.log('Category created!')
       return db.close()
-    }).then(() => console.log('Database connection closed'))
+    })
+    .then(() => console.log('Database connection closed'))
+    .catch(error => console.log(error))
 })
