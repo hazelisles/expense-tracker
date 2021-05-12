@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
+const methodOverride = require('method-override')
 const Records = require('./models/record')
 const Categories = require('./models/category')
 require('./config/mongoose')
@@ -16,6 +17,7 @@ app.set('view engine', 'hbs')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   // ~ 開頭表示直接執行這個 function，結尾有 ()
@@ -36,6 +38,8 @@ app.post('/', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
+
+
 
 app.listen(3000, (req, res) => {
   console.log('App is now listening on http://localhost:3000')
