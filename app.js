@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const Records = require('./models/record')
 const Categories = require('./models/category')
 require('./config/mongoose')
+const totalamount = require('./sum')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs', helpers: {
   getIcon: function(category, categories) {
@@ -21,7 +22,8 @@ app.get('/', (req, res) => {
   ~async function getData() {
     const record = await Records.find().lean().sort({ date: 'desc' })
     const category = await Categories.find().lean()
-    return res.render('index', { record, category })
+    const totalAmount = totalamount(record)
+    return res.render('index', { record, category, totalAmount })
   }();
 })
 
