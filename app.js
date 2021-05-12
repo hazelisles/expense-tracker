@@ -8,10 +8,15 @@ require('./config/mongoose')
 const totalamount = require('./sum')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs', helpers: {
+  getcn: function(category, categories) {
+    const cn = categories.find(c => c.category === category)
+    return cn.category_cn
+  },
   getIcon: function(category, categories) {
     const icon = categories.find(c => c.category === category)
     return icon.categoryIcon
-  }}
+  }
+}
 }))
 app.set('view engine', 'hbs')
 
@@ -35,6 +40,36 @@ app.get('/create', (req, res) => {
 
 app.post('/', (req, res) => {
   return Records.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
+app.get('/:id/edit', (req, res) => {
+  const { id } = req.params
+  ~async function get_data() {
+    const record = await Records.findById(id).lean()
+    const category = await Categories.find().lean()
+    return res.render('edit', { record, category })
+  }();
+  // 下方.then().catch()寫法
+  // let category = {}
+  // Categories.find().lean()
+  //   .then(c => category = c)
+  //   .then(() => {
+  //     Records.findById(id).lean()
+  //       .then(record => res.render('edit', { record, category }))
+  //       .catch(error => console.log(error))
+  //   })
+  //   .catch(error => console.log(error))
+})
+
+app.put('/:id', (req, res) => {
+  const { id } = req.params
+  return Records.findById(id)
+    .then(r => {
+      r = Object.assign(r, req.body)
+      return r.save()
+    })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })

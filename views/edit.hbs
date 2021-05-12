@@ -6,14 +6,15 @@
       </div>
     </div>
     <div class="card bg-light">
-      <form action="" method="post">
+      <form action="/{{ record._id }}?_method=PUT" method="post">
         <div class="card-body">
           <div class="row align-items-center my-3">
             <div class="col-3" style="text-align: center;">
               <label for="input-item" class="col-form-label">項目名稱：</label>
             </div>
             <div class="col-8">
-              <input type="text" id="input-item" name"name" class="form-control" aria-describedby="itemHelp" required>
+              <input type="text" id="input-item" name="name" class="form-control" aria-describedby="itemHelp"
+                value="{{ record.name }}" required>
             </div>
           </div>
           <div class="row align-items-center my-3">
@@ -21,7 +22,8 @@
               <label for="input-date" class="col-form-label">日　期：</label>
             </div>
             <div class="col-8">
-              <input type="date" id="input-date" name="date" class="form-control" aria-describedby="dateHelp" required>
+              <input type="date" id="input-date" name="date" class="form-control" aria-describedby="dateHelp"
+                value="{{ record.date }}" required>
             </div>
           </div>
           <div class="row align-items-center my-3">
@@ -30,7 +32,8 @@
             </div>
             <div class="col-8">
               <select name="category" id="input-category" class="btn btn-outline-dark" required>
-                <option disabled selected hidden>--- 類別 --- </option>
+                <option value="{{ record.category }}" disabled selected hidden>{{getcn record.category category}}
+                </option>
                 　<option value="house">-- 家居物業 --</option>
                 　<option value="traffic">-- 交通出行 --</option>
                 　<option value="entertainment">-- 休閒娛樂 --</option>
@@ -45,7 +48,7 @@
             </div>
             <div class="col-8">
               <input type="number" id="input-cost" name="amount" min="0" max="100000" class="form-control"
-                aria-describedby="costHelp" required>
+                value="{{ record.amount }}" aria-describedby="costHelp" required>
             </div>
           </div>
           <div class="row justify-content-center align-items-center my-4">
