@@ -39,6 +39,13 @@ app.post('/', (req, res) => {
     .catch(error => console.log(error))
 })
 
+app.delete('/records/:id', (req, res) => {
+  const { id } = req.params
+  return Records.findById(id)
+    .then(r => r.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
 
 
 app.listen(3000, (req, res) => {
