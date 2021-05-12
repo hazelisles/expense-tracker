@@ -32,8 +32,9 @@ app.get('/create', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  console.log(req.body)
-  return res.redirect('/')
+  return Records.create(req.body)
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
 })
 
 app.listen(3000, (req, res) => {
