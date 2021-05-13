@@ -6,9 +6,8 @@ const routes = require('./routes')
 
 require('./config/mongoose')
 
-
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs', helpers: {
-  getcn: function(category, categories) {
+  getCn: function(category, categories) {
     const cn = categories.find(c => c.category === category)
     return cn.category_cn
   },

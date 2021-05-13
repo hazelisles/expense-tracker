@@ -16,7 +16,7 @@
       </form>
       <form action="/search" method="GET">
         <select class="btn btn-outline-light" name="category" onchange="this.form.submit()">
-          <option disabled selected hidden>{{#unless theCategory}}--- 類別 ---{{/unless}}{{#if theCategory}}{{getcn
+          <option disabled selected hidden>{{#unless theCategory}}--- 類別 ---{{/unless}}{{#if theCategory}}{{getCn
             theCategory category}}{{/if}}</option>
           <option value="house">-- 家居物業 --</option>
           <option value="traffic">-- 交通出行 --</option>
