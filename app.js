@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const PORT = process.env.PORT || 3000
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const routes = require('./routes')
@@ -24,6 +25,6 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 app.use(routes)
 
-app.listen(3000, (req, res) => {
-  console.log('App is now listening on http://localhost:3000')
+app.listen(PORT, (req, res) => {
+  console.log(`App is now listening on http://localhost:${PORT}`)
 })
