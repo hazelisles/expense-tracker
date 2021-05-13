@@ -1,0 +1,41 @@
+.card-body {
+  border-radius: 5px;
+  box-shadow: -15px 12px 5px #9ca0b9;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.btn:active,
+.btn-sm:active {
+  transform: scale(0.96);
+  transition: transform 0.1s;
+}
+
+.text-title {
+  font-size: 1.5em;
+}
+
+.money-title {
+  font-size: 4em;
+  letter-spacing: 0.05em;
+}
+
+.font {
+  font-size: 2.2em;
+  color: #496c99;
+}
+
+.text-item {
+  font-size: 1.7em;
+}
+
+.text-date {
+  font-size: 1em;
+}
+
+.text-number {
+  font-size: 2em;
+  font-family: monospace, sans-serif;
+}
