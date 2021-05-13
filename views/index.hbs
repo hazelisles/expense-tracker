@@ -10,9 +10,9 @@
   <div class="col-10 col-md-8 col-lg-7 mx-auto mt-2">
     <div class="d-flex justify-content-between">
       <form action="/search" method="GET">
-        <button class="btn btn-outline-light today" type="submit" name="date" value="today">今 天</button>
-        <button class="btn btn-outline-light today" type="submit" name="date" value="thism">本 月</button>
-        <button class="btn btn-outline-light today" type="submit" name="date" value="lastm">上 個 月</button>
+        <button class="btn btn-outline-light bold" type="submit" name="date" value="today">今 天</button>
+        <button class="btn btn-outline-light bold" type="submit" name="date" value="thism">本 月</button>
+        <button class="btn btn-outline-light bold" type="submit" name="date" value="lastm">上 個 月</button>
       </form>
       <form action="/search" method="GET">
         <select class="btn btn-outline-light" name="category" onchange="this.form.submit()">
@@ -25,7 +25,7 @@
         </select>
       </form>
     </div>
-    <div class="cards mt-3">
+    <div class="cards mt-3 mb-2">
       {{#each record}}
       <div class="card-body row justify-content-around bg-light mb-1">
         <div class="card-image col-1 d-flex justify-content-center align-items-center">
@@ -39,7 +39,7 @@
           <div class="text-number">${{ this.amount }}</div>
         </div>
         <div class="card-buttons col-2">
-          <a href="/{{ this._id }}/edit">
+          <a href="/records/{{ this._id }}/edit">
             <button class="btn-sm btn-success col-12 my-1"><i class="fas fa-edit"></i></button>
           </a>
           <form action="/records/{{ this._id }}?_method=DELETE" method="post" onsubmit="return deleteConfirm()">

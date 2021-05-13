@@ -2,11 +2,10 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
-const Records = require('./models/record')
-const Categories = require('./models/category')
+const routes = require('./routes')
+
 require('./config/mongoose')
-const totalamount = require('./helpers/sum')
-const getdate = require('./helpers/date')
+
 
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs', helpers: {
   getcn: function(category, categories) {
@@ -24,93 +23,7 @@ app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.use(methodOverride('_method'))
-
-app.get('/', (req, res) => {
-  // ~ 開頭表示直接執行這個 function，結尾有 ()
-  ~async function getData() {
-    const record = await Records.find().lean().sort({ date: 'desc' })
-    const category = await Categories.find().lean()
-    const totalAmount = totalamount(record)
-    return res.render('index', { record, category, totalAmount })
-  }();
-})
-
-app.get('/create', (req, res) => {
-  return res.render('new')
-})
-
-app.get('/search', (req, res) => {
-  if (req.query.category) {
-    const theCategory = req.query.category
-    ~async function () {
-      const record = await Records.find({ "category" : `${theCategory}` }).lean().sort({ date: 'desc' })
-      const category = await Categories.find().lean()
-      const totalAmount = totalamount(record)
-      return res.render('index', { record, category, totalAmount })
-    }();
-  } else if (req.query.date) {
-    const today = getdate('today')
-    const thism = new RegExp('^' + getdate('thism'))
-    const lastm = new RegExp('^' + getdate('lastm')) 
-    ~async function () {
-      let record
-      if (req.query.date === 'today') {
-        record = await Records.find({ "date": `${today}` }).lean()
-      } else if (req.query.date === 'thism'){
-        record = await Records.find({ "date": { $regex : thism } }).lean().sort({ date: 'desc' })
-      } else {
-        record = await Records.find({ "date": { $regex : lastm } }).lean().sort({ date: 'desc' })
-      }
-      const category = await Categories.find().lean()
-      const totalAmount = totalamount(record)
-      return res.render('index', { record, category, totalAmount })
-    }();
-  }
-})
-
-app.post('/', (req, res) => {
-  return Records.create(req.body)
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-app.get('/:id/edit', (req, res) => {
-  const { id } = req.params
-  ~async function get_data() {
-    const record = await Records.findById(id).lean()
-    const category = await Categories.find().lean()
-    return res.render('edit', { record, category })
-  }();
-  // 下方.then().catch()寫法
-  // let category = {}
-  // Categories.find().lean()
-  //   .then(c => category = c)
-  //   .then(() => {
-  //     Records.findById(id).lean()
-  //       .then(record => res.render('edit', { record, category }))
-  //       .catch(error => console.log(error))
-  //   })
-  //   .catch(error => console.log(error))
-})
-
-app.put('/:id', (req, res) => {
-  const { id } = req.params
-  return Records.findById(id)
-    .then(r => {
-      r = Object.assign(r, req.body)
-      return r.save()
-    })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-app.delete('/records/:id', (req, res) => {
-  const { id } = req.params
-  return Records.findById(id)
-    .then(r => r.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
+app.use(routes)
 
 app.listen(3000, (req, res) => {
   console.log('App is now listening on http://localhost:3000')
