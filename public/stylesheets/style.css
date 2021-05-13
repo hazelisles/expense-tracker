@@ -1,3 +1,21 @@
+body {
+  padding-top: 65px;
+}
+
+.index-body {
+  padding-top: 175px;
+}
+
+.fix {
+  position: fixed;
+  top: 12%;
+  left: 20%;
+  z-index: 1020;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  border-radius: 15px;
+}
+
 .card-body {
   border-radius: 5px;
   box-shadow: -15px 12px 5px #9ca0b9;
