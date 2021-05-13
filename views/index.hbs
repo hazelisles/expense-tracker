@@ -8,9 +8,14 @@
     </div>
   </div>
   <div class="col-10 col-md-8 col-lg-7 mx-auto mt-2">
-    <div class="d-flex justify-content-end">
-      <form action="/" method="POST">
-        <select class="btn btn-outline-light" name="category">
+    <div class="d-flex justify-content-between">
+      <form action="/search" method="GET">
+        <button class="btn btn-outline-light today" type="submit" name="date" value="today">今 天</button>
+        <button class="btn btn-outline-light today" type="submit" name="date" value="thism">本 月</button>
+        <button class="btn btn-outline-light today" type="submit" name="date" value="lastm">上 個 月</button>
+      </form>
+      <form action="/search" method="GET">
+        <select class="btn btn-outline-light" name="category" onchange="this.form.submit()">
           <option disabled selected hidden>--- 類別 ---</option>
           <option value="house">-- 家居物業 --</option>
           <option value="traffic">-- 交通出行 --</option>

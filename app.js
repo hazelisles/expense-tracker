@@ -5,7 +5,8 @@ const methodOverride = require('method-override')
 const Records = require('./models/record')
 const Categories = require('./models/category')
 require('./config/mongoose')
-const totalamount = require('./sum')
+const totalamount = require('./helpers/sum')
+const getdate = require('./helpers/date')
 
 app.engine('hbs', exphbs({ defaultLayout: 'main' , extname: '.hbs', helpers: {
   getcn: function(category, categories) {
@@ -36,6 +37,35 @@ app.get('/', (req, res) => {
 
 app.get('/create', (req, res) => {
   return res.render('new')
+})
+
+app.get('/search', (req, res) => {
+  if (req.query.category) {
+    const theCategory = req.query.category
+    ~async function () {
+      const record = await Records.find({ "category" : `${theCategory}` }).lean().sort({ date: 'desc' })
+      const category = await Categories.find().lean()
+      const totalAmount = totalamount(record)
+      return res.render('index', { record, category, totalAmount })
+    }();
+  } else if (req.query.date) {
+    const today = getdate('today')
+    const thism = new RegExp('^' + getdate('thism'))
+    const lastm = new RegExp('^' + getdate('lastm')) 
+    ~async function () {
+      let record
+      if (req.query.date === 'today') {
+        record = await Records.find({ "date": `${today}` }).lean()
+      } else if (req.query.date === 'thism'){
+        record = await Records.find({ "date": { $regex : thism } }).lean().sort({ date: 'desc' })
+      } else {
+        record = await Records.find({ "date": { $regex : lastm } }).lean().sort({ date: 'desc' })
+      }
+      const category = await Categories.find().lean()
+      const totalAmount = totalamount(record)
+      return res.render('index', { record, category, totalAmount })
+    }();
+  }
 })
 
 app.post('/', (req, res) => {
@@ -81,7 +111,6 @@ app.delete('/records/:id', (req, res) => {
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
-
 
 app.listen(3000, (req, res) => {
   console.log('App is now listening on http://localhost:3000')
