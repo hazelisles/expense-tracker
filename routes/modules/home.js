@@ -26,7 +26,7 @@ router.get('/search', (req, res) => {
       const record = await Records.find({ "category" : `${theCategory}` }).lean().sort({ date: 'desc' })
       const category = await Categories.find().lean()
       const totalAmount = totalamount(record)
-      return res.render('index', { record, category, totalAmount })
+      return res.render('index', { record, category, totalAmount, theCategory })
     }();
   } else if (req.query.date) {
     const today = getdate('today')
