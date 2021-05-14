@@ -1,8 +1,6 @@
 function totalAmount(records) {
-  records.map(a => a.amount)
-    .reduce((x, y) => {
-      return x + y
-    }, 0)
+  const amount = records.map(a => a.amount).reduce((x, y) => x + y, 0)
+  return amount
 }
 
 module.exports = totalAmount
