@@ -4,33 +4,28 @@ const Records = require('../../models/record')
 const Categories = require('../../models/category')
 
 router.post('/', (req, res) => {
-  return Records.create(req.body)
+  const record = Object.assign(req.body, { userId: req.user._id })
+  return Records.create(record)
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
 })
 
-router.get('/:id/edit', (req, res) => {
-  const { id } = req.params
-  ~async function get_data() {
-    const record = await Records.findById(id).lean()
+router.get('/:id/edit', async (req, res) => {
+  try {
+    const userId = req.user._id
+    const _id = req.params.id
+    const record = await Records.findOne({ _id, userId }).lean()
     const category = await Categories.find().lean()
     return res.render('edit', { record, category })
-  }();
-  // 下方.then().catch()寫法
-  // let category = {}
-  // Categories.find().lean()
-  //   .then(c => category = c)
-  //   .then(() => {
-  //     Records.findById(id).lean()
-  //       .then(record => res.render('edit', { record, category }))
-  //       .catch(error => console.log(error))
-  //   })
-  //   .catch(error => console.log(error))
+  } catch (err) {
+    console.warn(err)
+  }
 })
 
 router.put('/:id', (req, res) => {
-  const { id } = req.params
-  return Records.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Records.findOne({ _id, userId })
     .then(r => {
       r = Object.assign(r, req.body)
       return r.save()
@@ -40,8 +35,9 @@ router.put('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-  const { id } = req.params
-  return Records.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Records.findOne({ _id, userId })
     .then(r => r.remove())
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))
