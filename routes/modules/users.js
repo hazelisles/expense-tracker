@@ -2,12 +2,26 @@ const express = require('express')
 const passport = require('passport')
 const router = express.Router()
 const User = require('../../models/user')
+const { check, validationResult } = require('express-validator')
 
 router.get('/login', (req, res) => {
   res.render('login')
 })
 
-router.post('/login', passport.authenticate('local', {
+router.post('/login', [check('email').notEmpty().withMessage('請輸入Email！'), check('password').notEmpty().withMessage('請輸入密碼！')], (req, res, next) => {
+  const error = validationResult(req)
+  if (!error.isEmpty()) {
+    const { email } = req.body
+    const errors = error.array()
+    return res.render('login', {
+      errors,
+      email,
+    })
+  }
+  if (error.isEmpty()) {
+    next()
+  }
+}, passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/users/login'
 }))
