@@ -9,10 +9,10 @@ module.exports = app => {
   passport.use(new localStrategy({ usernameField: 'email', passReqToCallback: true }, (req, email, password, done) => {
     User.findOne({ email }).then(user => {
       if (!user) {
-        return done(null, false, { msg: '此 Email 尚未註冊！' })
+        return done(null, false, req.flash('error_msg', '此 Email 尚未註冊！'), req.flash('email', email))
       }
       if (user.password !== password) {
-        return done(null, false, { msg: 'Email 或 密碼錯誤！' })
+        return done(null, false, req.flash('error_msg', 'Email 或 密碼錯誤！'), req.flash('email', email))
       }
       return done(null, user)
     }).catch(err => done(err, false))
