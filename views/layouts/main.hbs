@@ -26,16 +26,19 @@
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <i class="fas fa-hand-holding-usd"></i>
-          家庭記帳本
+          <strong>{{#if user}} {{user.name}} 的{{/if}}網頁記帳本</strong>
         </a>
         <div class="buttongroup">
-          <a href="/create" class="btn btn-outline-dark"><i
-              class="fas fa-plus"
-            ></i>
-            新 增</a>
-          <a href="/users/logout" class="btn btn-outline-primary">Sign Out</a>
-          <a href="/users/login" class="btn btn-outline-primary">Sign In</a>
-          <a href="/users/register" class="btn btn-outline-primary">Sign Up</a>
+          {{#if isAuthenticated}}
+            <a href="/create" class="btn btn-outline-dark"><i
+                class="fas fa-plus"
+              ></i>
+              新 增</a>
+            <a href="/users/logout" class="btn btn-outline-primary">Sign Out</a>
+          {{else}}
+            <a href="/users/login" class="btn btn-outline-primary">Sign In</a>
+            <a href="/users/register" class="btn btn-outline-primary">Sign Up</a>
+          {{/if}}
         </div>
       </div>
     </nav>
