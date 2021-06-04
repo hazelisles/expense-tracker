@@ -4,6 +4,7 @@ const exphbs = require('express-handlebars')
 const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
+const moment = require('moment')
 const usePassport = require('./config/passport')
 const routes = require('./routes')
 if (process.env.NODE_ENV !== 'production') {
@@ -21,6 +22,9 @@ app.engine('hbs', exphbs({
     getIcon: function (category, categories) {
       const icon = categories.find(c => c.category === category)
       return icon.categoryIcon
+    },
+    showDate: function (date) {
+      return moment(date).format('YYYY-MM-DD ( ddd )')
     }
   }
 }))

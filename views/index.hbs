@@ -34,7 +34,7 @@
         </div>
         <div class="card-text row col-7">
           <div class="col-12 align-self-center text-item">{{ this.name }}</div>
-          <div class="col-12 align-self-center text-date">{{ this.date }}</div>
+          <div class="col-12 align-self-center text-date">{{{showDate this.date}}}</div>
           {{#if this.merchant}}
           <div class="col-12 align-self-center text-merchant"><strong>商家：</strong> {{ this.merchant }}</div>
           {{/if}}
