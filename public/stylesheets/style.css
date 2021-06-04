@@ -50,10 +50,22 @@ body {
 }
 
 .text-date {
-  font-size: 1em;
+  font-size: 0.9em;
+}
+
+.text-merchant {
+  font-size: 0.9em;
+  font-weight: 500;
+  font-family: Verdana, sans-serif;
+  background-color: beige;
+  border-radius: 5px;
 }
 
 .text-number {
   font-size: 2em;
   font-family: monospace, sans-serif;
+}
+
+.bd {
+  border: red 1px solid;
 }

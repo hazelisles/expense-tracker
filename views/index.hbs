@@ -35,17 +35,22 @@
         <div class="card-text row col-7">
           <div class="col-12 align-self-center text-item">{{ this.name }}</div>
           <div class="col-12 align-self-center text-date">{{ this.date }}</div>
+          {{#if this.merchant}}
+          <div class="col-12 align-self-center text-merchant"><strong>商家：</strong> {{ this.merchant }}</div>
+          {{/if}}
         </div>
         <div class="card-price col-2 d-flex justify-content-center align-items-center">
           <div class="text-number">${{ this.amount }}</div>
         </div>
-        <div class="card-buttons col-2">
-          <a href="/records/{{ this._id }}/edit">
+        <div class="card-buttons col-2 d-flex align-items-center justify-content-center">
+          <div class="col-12">
+            <a href="/records/{{ this._id }}/edit">
             <button class="btn-sm btn-success col-12 my-1"><i class="fas fa-edit"></i></button>
-          </a>
-          <form action="/records/{{ this._id }}?_method=DELETE" method="post" onsubmit="return deleteConfirm()">
+           </a>
+           <form action="/records/{{ this._id }}?_method=DELETE" method="post" onsubmit="return deleteConfirm()">
             <button class="btn-sm btn-danger col-12 my-1"><i class="fas fa-trash-alt"></i></button>
-          </form>
+           </form> 
+          </div>
         </div>
       </div>
       {{/each}}
