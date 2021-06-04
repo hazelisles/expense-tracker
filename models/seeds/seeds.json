@@ -29,7 +29,7 @@
   "record": [
     {
       "name": "晚餐",
-      "date": "2021-03-30",
+      "date": "2021-06-06",
       "category": "food",
       "amount": 360
     },
@@ -40,22 +40,67 @@
       "amount": 1490
     },
     {
-      "name": "租金",
-      "date": "2021-05-01",
+      "name": "6月租金",
+      "date": "2021-06-01",
       "category": "house",
       "amount": 11000
     },
     {
       "name": "魔物獵人",
-      "date": "2021-04-25",
+      "date": "2021-05-25",
       "category": "entertainment",
-      "amount": 1790
+      "amount": 1790,
+      "merchant": "任天堂"
     },
     {
       "name": "AC 學期三",
-      "date": "2021-03-30",
+      "date": "2021-04-15",
       "category": "others",
-      "amount": 36000
+      "amount": 36000,
+      "merchant": "Alpha Camp"
+    },
+    {
+      "name": "75%酒精",
+      "date": "2021-06-05",
+      "category": "others",
+      "amount": 170
+    },
+    {
+      "name": "機票",
+      "date": "2021-06-12",
+      "category": "traffic",
+      "amount": 25600
+    },
+    {
+      "name": "Just Dance 2021",
+      "date": "2021-05-16",
+      "category": "entertainment",
+      "amount": 1690,
+      "merchant": "任天堂"
+    },
+    {
+      "name": "5月租金",
+      "date": "2021-05-01",
+      "category": "house",
+      "amount": 10000
+    },
+    {
+      "name": "果香紅茶",
+      "date": "2021-06-08",
+      "category": "food",
+      "amount": 30
+    }
+  ],
+  "user": [
+    {
+      "name": "艾爾",
+      "email": "els@example.net",
+      "password": "els123"
+    },
+    {
+      "name": "Amelia",
+      "email": "amelia@example.net",
+      "password": "amelia123"
     }
   ]
 }
