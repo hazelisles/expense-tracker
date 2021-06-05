@@ -1,7 +1,7 @@
 const moment = require('moment')
 
 function getDate(date) {
-  let start, end
+  let start, end, theMonth
   switch (date) {
     case 'today':
       start = moment().startOf('day')
@@ -14,11 +14,13 @@ function getDate(date) {
     case 'thism':
       start = moment().startOf('month')
       end = moment().endOf('month')
-      return { start, end }
+      theMonth = (moment().month() + 1).toString()
+      return { start, end, theMonth }
     case 'lastm':
       start = moment().startOf('month').subtract(1, 'months')
       end = moment().endOf('month').subtract(1, 'months')
-      return { start, end }
+      theMonth = (moment().month()).toString()
+      return { start, end, theMonth }
   }
 }
 

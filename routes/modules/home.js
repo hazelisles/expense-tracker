@@ -36,7 +36,8 @@ router.get('/quicksort', async (req, res) => {
     ])
     const category = await Categories.find().lean()
     const totalAmount = totalamount(record)
-    return res.render('index', { record, category, totalAmount, months })
+    const { theMonth } = selection
+    return res.render('index', { record, category, totalAmount, months, theMonth })
   } catch (err) {
     console.log(err)
   }
