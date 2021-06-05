@@ -4,6 +4,8 @@ const Records = require('../../models/record')
 const Categories = require('../../models/category')
 const totalamount = require('../../helpers/sum')
 const getdate = require('../../helpers/date')
+const moment = require('moment')
+const getDate = require('../../helpers/date')
 
 router.get('/', async (req, res) => {
   try {
@@ -21,6 +23,19 @@ router.get('/create', (req, res) => {
   return res.render('new')
 })
 
+router.get('/quicksort', async (req, res) => {
+  try {
+    const userId = req.user._id
+    const selection = getDate(req.query.date)
+    const record = await Records.find({ userId, date: { $gte: selection.start, $lt: selection.end } }).lean().sort({ date: 'desc' })
+    const category = await Categories.find().lean()
+    const totalAmount = totalamount(record)
+    return res.render('index', { record, category, totalAmount })
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 router.get('/search', (req, res) => {
   if (req.query.category) {
     const theCategory = req.query.category
@@ -30,23 +45,6 @@ router.get('/search', (req, res) => {
       const category = await Categories.find().lean()
       const totalAmount = totalamount(record)
       return res.render('index', { record, category, totalAmount, theCategory })
-    }();
-  } else if (req.query.date) {
-    const today = getdate('today')
-    const thism = new RegExp('^' + getdate('thism'))
-    const lastm = new RegExp('^' + getdate('lastm'))
-    ~async function () {
-      let record
-      if (req.query.date === 'today') {
-        record = await Records.find({ userId, "date": `${today}` }).lean()
-      } else if (req.query.date === 'thism') {
-        record = await Records.find({ userId, "date": { $regex: thism } }).lean().sort({ date: 'desc' })
-      } else {
-        record = await Records.find({ userId, "date": { $regex: lastm } }).lean().sort({ date: 'desc' })
-      }
-      const category = await Categories.find().lean()
-      const totalAmount = totalamount(record)
-      return res.render('index', { record, category, totalAmount })
     }();
   }
 })

@@ -1,26 +1,24 @@
+const moment = require('moment')
+
 function getDate(date) {
-  const DATE = date
-  const Today = new Date();
-  const y = Today.getFullYear();
-  let m = Today.getMonth()+1;
-  let lm = Today.getMonth()
-  if (m < 10) {
-    m = `0${m}`
-  }
-  if (lm < 10) {
-    lm = `0${lm}`
-  }
-  let d = Today.getDate();
-  if (d < 10) {
-    d = `0${d}`
-  }
-  switch (DATE) {
+  let start, end
+  switch (date) {
     case 'today':
-      return `${y}-${m}-${d}`
+      start = moment().startOf('day')
+      end = moment().endOf('day')
+      return { start, end }
+    case 'yesterday':
+      start = moment().startOf('day').subtract(1, 'days')
+      end = moment().endOf('day').subtract(1, 'days')
+      return { start, end }
     case 'thism':
-      return `${y}-${m}`
+      start = moment().startOf('month')
+      end = moment().endOf('month')
+      return { start, end }
     case 'lastm':
-      return `${y}-${lm}`
+      start = moment().startOf('month').subtract(1, 'months')
+      end = moment().endOf('month').subtract(1, 'months')
+      return { start, end }
   }
 }
 

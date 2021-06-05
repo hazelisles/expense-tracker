@@ -16,6 +16,13 @@ body {
   border-radius: 15px;
 }
 
+.fixleft {
+  position: fixed;
+  top: 12%;
+  left: 2%;
+  z-index: 1020;
+}
+
 .card-body {
   border-radius: 5px;
   box-shadow: -15px 12px 5px #9ca0b9;
