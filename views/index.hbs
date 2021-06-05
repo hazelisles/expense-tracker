@@ -14,20 +14,22 @@
     <div class="d-flex justify-content-center mb-2">
       <div class="money-title text-white">$ {{ totalAmount }}</div>
     </div>
-    <div class="d-flex justify-content-between">
-      
-      <form action="/search" method="GET">
-        <select class="btn btn-outline-light" name="category" onchange="this.form.submit()">
-          <option disabled selected hidden>{{#unless theCategory}}--- 類別 ---{{/unless}}{{#if theCategory}}{{getCn
-            theCategory category}}{{/if}}</option>
-          <option value="house">-- 家居物業 --</option>
-          <option value="traffic">-- 交通出行 --</option>
-          <option value="entertainment">-- 休閒娛樂 --</option>
-          <option value="food">-- 餐飲食品 --</option>
-          <option value="others">-- 其他 --</option>
+    <form action="/search" method="GET">
+      <div class="d-flex justify-content-between">
+        <select class="btn btn-outline-light" name="month" onchange="this.form.submit()">
+          <option value="">--- 月份 ---</option>
+          {{#each months}}
+          <option value="{{this._id}}" {{#if (eq this.month ../theMonth )}} selected {{/if}}>-- {{this._id}} 月 --</option>
+          {{/each}}
         </select>
-      </form>
-    </div>
+        <select class="btn btn-outline-light" name="category" onchange="this.form.submit()">
+          <option value="">--- 類別 ---</option>
+          {{#each category}}
+          <option value="{{this.category}}" {{#if (eq this.category ../theCategory )}} selected {{/if}}>{{this.category_cn}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </form>
   </div>
   <div class="col-10 col-md-8 col-lg-7 mx-auto mt-2 index-body">
     <div class="cards mt-3 mb-2">
