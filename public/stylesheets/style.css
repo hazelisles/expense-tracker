@@ -23,6 +23,25 @@ body {
   z-index: 1020;
 }
 
+.btnbg {
+  background: -webkit-linear-gradient(
+    -45deg,
+    rgba(255, 136, 0, 0.7) 0%,
+    rgba(255, 0, 0, 0.7) 33%,
+    rgba(0, 0, 255, 0.7) 66%,
+    rgba(149, 0, 255, 0.7) 100%
+  );
+  background: -moz-linear-gradient(
+    -45deg,
+    rgba(255, 136, 0, 0.7) 0%,
+    rgba(255, 0, 0, 0.7) 33%,
+    rgba(0, 0, 255, 0.7) 66%,
+    rgba(149, 0, 255, 0.7) 100%
+  );
+  padding: 10px;
+  border-radius: 15px;
+}
+
 .card-body {
   border-radius: 5px;
   box-shadow: -15px 12px 5px #9ca0b9;
@@ -71,8 +90,4 @@ body {
 .text-number {
   font-size: 2em;
   font-family: monospace, sans-serif;
-}
-
-.bd {
-  border: red 1px solid;
 }
