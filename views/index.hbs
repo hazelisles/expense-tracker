@@ -16,6 +16,12 @@
     </div>
     <form action="/search" method="GET">
       <div class="d-flex justify-content-between">
+        <select class="btn btn-outline-light" name="year" onchange="this.form.submit()">
+          <option value="">--- 年份 ---</option>
+          {{#each years}}
+          <option value="{{this._id}}" {{#if (eq this.year ../theYear )}} selected {{/if}}>-- {{this._id}} 年 --</option>
+          {{/each}}
+        </select>
         <select class="btn btn-outline-light" name="month" onchange="this.form.submit()">
           <option value="">--- 月份 ---</option>
           {{#each months}}
