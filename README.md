@@ -1,22 +1,38 @@
 ### expense-tracker
-# 家庭記帳本
+# 網頁記帳本2.0
 運用Node.js, Express, handlebars, MongoDB打造的網頁記帳應用程式。
+
+已發布於Heroku，可由以下連結進入使用：
+
+[網頁記帳本](https://agile-refuge-56202.herokuapp.com/)
 
 ## 專案畫面
 <h4> 專案首頁 </h4>
-<img align="center" src="https://github.com/hazelisles/expense-tracker/blob/master/demo.gif?raw=true" width="750"/>
+<img align="center" src="https://github.com/hazelisles/expense-tracker/blob/master/images/demo.gif?raw=true" width="750"/>
 
 
 ## 功能描述
 1. 可以在首頁瀏覽所有帳務紀錄
-   * 可以依照選定類別進行瀏覽
-   * 可以選擇查看`今天`, `本月`, `上個月`的帳務紀錄
+   * 可以同時依照選定的類別、年份、月份進行瀏覽(v2.0)
+   * 可以選擇查看`今天`, `昨天`, `本月`, `上個月`的帳務紀錄
 
 2. 可以新增一筆支出帳務紀錄
 
 3. 可以修改一筆支出帳務紀錄
 
 4. 可以刪除一筆支出帳務紀錄
+
+5. 新增商家欄位(v2.0)
+
+6. 需進行帳戶註冊後，登入才可以使用(v2.0)
+
+7. 開發者可以使用facebook第三方登入使用(v2.0)
+
+### 測試使用者帳號
+| 帳號 | 密碼 | 擁有帳務紀錄 |
+|-----|------|---------|
+|els@example.net|els123|#1,#2,#3,#4,#5|
+|amelia@example.net|amelia123|#6,#7,#8,#9,#10|
 
 
 ## 環境建置與需求
@@ -36,11 +52,11 @@ cd expense-tracker
 npm install 
 npm i nodemon
 ```
-4. 產生示範用帳務種子資料至 MongoDB
+4. 產生測試用帳務及使用者種子資料至 MongoDB
 ```
 npm run seed
 ```
-終端機顯示 `MongoDB Connected!`, `Record created!` 及 `Category created!` 即完成資料載入
+終端機顯示 `MongoDB Connected!`, `Category created!` 及 `Done!` 即完成資料載入
 
 
 5. 啟動伺服器，執行專案
