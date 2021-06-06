@@ -26,6 +26,9 @@ app.engine('hbs', exphbs({
     showDate: function (date) {
       return moment(date).format('YYYY-MM-DD ( ddd )')
     },
+    valueDate: function (date) {
+      return moment(date).format('YYYY-MM-DD')
+    },
     eq: function (v1, v2) { return v1 === v2 }
   }
 }))
