@@ -6,6 +6,7 @@
         帳 號</h3>
       <h1 class="text-center mb-3">Sign Up</h1>
       {{> message}}
+      <div class="text-danger h6">* 所有欄位必填</div>
       <form action="/users/register" method="post" class="row">
         <div class="col-10 mx-auto my-2">
           <label for="name">姓名 Name</label>
@@ -16,6 +17,8 @@
             class="form-control"
             placeholder="Enter Nick Name"
             value="{{name}}"
+            maxlength="15"
+            required
           />
         </div>
         <div class="col-10 mx-auto my-2">
@@ -27,6 +30,7 @@
             class="form-control"
             placeholder="Enter Email"
             value="{{email}}"
+            required
           />
         </div>
         <div class="col-10 mx-auto my-2">
@@ -38,6 +42,7 @@
             class="form-control"
             placeholder="Enter Password"
             value="{{password}}"
+            required
           />
         </div>
         <div class="col-10 mx-auto my-2">
@@ -49,6 +54,7 @@
             class="form-control"
             placeholder="Confirm Password"
             value="{{confirmPassword}}"
+            required
           />
         </div>
         <button type="submit" class="btn btn-primary col-4 mx-auto my-3">
